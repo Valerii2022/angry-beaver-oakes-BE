@@ -1,28 +1,16 @@
 import express from "express";
-import logger from "morgan";
 import cors from "cors";
-// import mongoose from "mongoose";
-
+import morgan from "morgan";
 import "dotenv/config";
 
 import galleryRouter from "./routes/api/gallery-router.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-const formatsLogger = app.get("env") === "development" ? "dev" : "short";
-
-app.use(logger(formatsLogger));
+app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
-
-// mongoose
-//   .connect(process.env.DB_HOST, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("Connected to MongoDB"))
-//   .catch((err) => console.error("MongoDB connection error:", err));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send("Hello, Vercel!");
@@ -39,6 +27,4 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+export default app;
