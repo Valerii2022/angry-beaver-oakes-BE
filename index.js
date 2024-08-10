@@ -5,8 +5,10 @@ import cors from "cors";
 
 import "dotenv/config";
 
+import galleryRouter from "./routes/api/gallery-router.js";
+
 const app = express();
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
@@ -26,6 +28,8 @@ app.get("/", (req, res) => {
   res.send("Hello, Vercel!");
 });
 
+app.use("/api/gallery", galleryRouter);
+
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
@@ -35,6 +39,6 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-app.listen(3000, () => {
-  console.log(`Server running on port 3000`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
