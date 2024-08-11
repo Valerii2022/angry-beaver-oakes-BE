@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
   res.send("Hello, Vercel!");
 });
 
+app.get("/api/products", (req, res) => {
+  res.send("Here will be all our products");
+});
+
 app.use("/api/gallery", galleryRouter);
 
 app.use((req, res) => {

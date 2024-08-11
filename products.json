@@ -1,0 +1,51 @@
+[{
+    "title":"SEASONAL MENU",
+    "description":"",
+    "items":[{
+        "title":"Tater Kegs",
+        "description":"HANDMADE SEASONED TOTS WITH BACON, CHIVES AND CHEDDAR WITH SEASONED SOUR CREAM",
+        "options":[{"title":"AS APPETIZER","price":""}],
+        "price":"11",
+        "size":[],
+        "Toppings":[],
+        "Remove Toppings":[],
+        "Add Extras":[],
+        "Choice of Side":[],
+        "Choice of Dressing":[],
+        "Add Additional Sides":[]
+    }]
+},
+{
+    "title":"APPETIZERS",
+    "description":"",
+    "items":[{
+        "title":"Hudson Bay Tray",
+        "description":"Enough for the whole \"dam\" group! Includes steak bites, fried pickles, onion petals, popcorn chicken & fried cheddar.",
+        "options":[],
+        "price":"24",
+        "size":[],
+        "Toppings":[],
+        "Remove Toppings":[],
+        "Add Extras":[],
+        "Choice of Side":[],
+        "Choice of Dressing":[],
+        "Add Additional Sides":[]
+    }]
+},
+{
+    "title":"SANDWICHES, BURGERS AND SALADS",
+    "description":"All of these Juicy Grilled Beef Burgers and Mouthwatering Sandwiches include a Side of Fries.",
+    "items":[{
+        "title":"Bootlegger Burger",
+        "description":"Something this delicious should be illegal! With bacon, American cheese, caramelized onion & a whiskey sauce.",
+        "options":[],
+        "price":"13",
+        "size":[],
+        "Toppings":[{"title":"Sub GF Bun","price":"2.00"},{"title":"No Bun","price":""},{"title":"No Bacon","price":""},{"title":"No Cheese","price":""},{"title":"Add Burger Patty","price":"4.00"}],
+        "Remove Toppings":[],
+        "Add Extras":[],
+        "Choice of Side":[],
+        "Choice of Dressing":[],
+        "Add Additional Sides":[]
+    }]
+}]
