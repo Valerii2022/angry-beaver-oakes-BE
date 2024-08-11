@@ -4,6 +4,7 @@ import morgan from "morgan";
 import "dotenv/config";
 
 import galleryRouter from "./routes/api/gallery-router.js";
+import productRouter from "./routes/api/product-router.js";
 
 const app = express();
 
@@ -16,11 +17,8 @@ app.get("/", (req, res) => {
   res.send("Hello, Vercel!");
 });
 
-app.get("/api/products", (req, res) => {
-  res.send("Here will be all our products");
-});
-
 app.use("/api/gallery", galleryRouter);
+app.use("/api/products", productRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
