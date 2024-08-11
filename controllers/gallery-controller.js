@@ -1,4 +1,4 @@
-import { getGallery } from "../services/galleryServices.js";
+import getGallery from "../services/galleryServices.js";
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
 
 const getImages = async (req, res, next) => {
