@@ -15,7 +15,7 @@ const contactSchema = new Schema(
       type: String,
       required: true,
     },
-    messsage: {
+    message: {
       type: String,
       required: true,
     },
@@ -29,6 +29,6 @@ contactSchema.pre("findOneAndUpdate", setUpdateSettings);
 
 contactSchema.post("findOneAndUpdate", handleSaveError);
 
-const Gallery = model("contact", gallerySchema);
+const Contact = model("contact", contactSchema);
 
 export default Contact;
