@@ -10,25 +10,26 @@ import orderRouter from "./routes/api/order-router.js";
 import subscribeRouter from "./routes/api/subscribe-router.js";
 
 const app = express();
-const allowedOrigins = [
-  "https://angry-beaver-lodge.vercel.app",
-  "http://localhost:3000/",
-];
+// const allowedOrigins = [
+//   "https://angry-beaver-lodge.vercel.app",
+//   "http://localhost:3000/",
+// ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-  })
-);
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//   })
+// );
 
 app.use(morgan("tiny"));
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello, Angry Beaver Lodge!");
