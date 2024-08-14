@@ -29,6 +29,6 @@ contactSchema.pre("findOneAndUpdate", setUpdateSettings);
 
 contactSchema.post("findOneAndUpdate", handleSaveError);
 
-const Gallery = model("image", gallerySchema);
+const Gallery = model("contact", gallerySchema);
 
 export default Contact;
