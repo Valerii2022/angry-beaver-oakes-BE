@@ -5,6 +5,9 @@ import "dotenv/config";
 
 import galleryRouter from "./routes/api/gallery-router.js";
 import productRouter from "./routes/api/product-router.js";
+import contsctRouter from "./routes/api/contact-router.js";
+import orderRouter from "./routes/api/order-router.js";
+import subscribeRouter from "./routes/api/subscribe-router.js";
 
 const app = express();
 
@@ -19,6 +22,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/gallery", galleryRouter);
 app.use("/api/products", productRouter);
+app.use("/api/contacts", contsctRouter);
+app.use("/api/orders", orderRouter);
+app.use("/api/subscribe", subscribeRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

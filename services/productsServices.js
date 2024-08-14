@@ -5,7 +5,7 @@ import path from "path";
 
 // const getAllProducts = async () => Product.find();
 
-const productsPath = path.resolve("services", "products.json");
+const productsPath = path.resolve("data", "products.json");
 
 const getAllProducts = async () => {
   const products = await fs.readFile(productsPath);

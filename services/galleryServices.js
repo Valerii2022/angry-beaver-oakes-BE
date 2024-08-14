@@ -4,7 +4,7 @@ import path from "path";
 
 // export const getGallery = async () => Gallery.find();
 
-const galleryPath = path.resolve("services", "gallery.json");
+const galleryPath = path.resolve("data", "gallery.json");
 
 const getGallery = async () => {
   const gallery = await fs.readFile(galleryPath);
