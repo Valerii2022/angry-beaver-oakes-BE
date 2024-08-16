@@ -7,7 +7,7 @@ export const getGallery = async () => {
     const numA = parseInt(a.id.match(/\d+$/), 10);
     const numB = parseInt(b.id.match(/\d+$/), 10);
 
-    if (a.title.replace(/\d+$/, "") === b.title.replace(/\d+$/, "")) {
+    if (a.id.replace(/\d+$/, "") === b.id.replace(/\d+$/, "")) {
       return numA - numB;
     } else {
       return a.id.localeCompare(b.id);
