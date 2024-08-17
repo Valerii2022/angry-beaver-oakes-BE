@@ -13,10 +13,7 @@ const subscribeSchema = new Schema(
     },
     email: {
       type: String,
-        required: true,
-      
-
-        
+      required: true,
     },
   },
   { versionKey: false }
@@ -28,6 +25,6 @@ subscribeSchema.pre("findOneAndUpdate", setUpdateSettings);
 
 subscribeSchema.post("findOneAndUpdate", handleSaveError);
 
-const Subscribe = model("contact", subscribeSchema);
+const Subscribe = model("subscribe", subscribeSchema);
 
 export default Subscribe;
