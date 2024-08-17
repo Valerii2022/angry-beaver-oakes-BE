@@ -1,5 +1,5 @@
-const addSubscribe = async () => {
-  return "subscribe logic need to be here!";
-};
+import Subscribe from "../models/Subscribe";
+
+const addSubscribe = async () => async (data) => Subscribe.create();
 
 export default addSubscribe;
