@@ -2,7 +2,7 @@ import ctrlWrapper from "../decorators/ctrlWrapper.js";
 import addSubscribe from "../services/subscribeServices.js";
 
 const add = async (req, res, next) => {
-  const result = await addSubscribe();
+  const result = await addSubscribe(req.body);
   res.status(201).json(result);
 };
 
