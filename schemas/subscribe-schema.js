@@ -3,14 +3,19 @@ import { namePattern } from "../constants/namePattern.js";
 import { emailPattern } from "../constants/emailPattern.js";
 
 const subscribeSchema = Joi.object({
-  firstName: Joi.string().min(3).max(20).required().regex(namePattern).message({
-    "any.required": `"first name" must be exist`,
-    "string.min": `"first name" should have a minimum length of 3`,
-    "string.max": `"first name" should have maximum length of 20`,
-    "string.empty": `"first name" cannot be an empty field`,
-    "string.pattern.base": `"first name" must be only latin characters.`,
-  }),
-  lastName: Joi.string().min(3).max(20).required().regex(namePattern).message({
+  firstName: Joi.string()
+    .min(3)
+    .max(20)
+    .required()
+    .regex(namePattern)
+    .messages({
+      "any.required": `"first name" must be exist`,
+      "string.min": `"first name" should have a minimum length of 3`,
+      "string.max": `"first name" should have maximum length of 20`,
+      "string.empty": `"first name" cannot be an empty field`,
+      "string.pattern.base": `"first name" must be only latin characters.`,
+    }),
+  lastName: Joi.string().min(3).max(20).required().regex(namePattern).messages({
     "any.required": `"last name" must be exist`,
     "string.min": `"last name" should have a minimum length of 3`,
     "string.max": `"last name" should have maximum length of 20`,

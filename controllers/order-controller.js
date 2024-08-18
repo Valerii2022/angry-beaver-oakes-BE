@@ -1,10 +1,10 @@
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
-import { addOrder, getOrder } from "../services/ordersServices.js";
+import addOrder from "../services/ordersServices.js";
 
-const get = async (req, res, next) => {
-  const order = await getOrder();
-  res.json(order);
-};
+// const get = async (req, res, next) => {
+//   const order = await getOrder();
+//   res.json(order);
+// };
 
 const add = async (req, res, next) => {
   const result = await addOrder();
@@ -13,5 +13,4 @@ const add = async (req, res, next) => {
 
 export default {
   add: ctrlWrapper(add),
-  get: ctrlWrapper(get),
 };

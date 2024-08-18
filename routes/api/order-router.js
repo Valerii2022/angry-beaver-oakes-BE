@@ -6,7 +6,7 @@ import isEmptyBody from "../../middlewares/isEmptyBody.js";
 
 const orderRouter = express.Router();
 
-orderRouter.get("/", orderController.get);
+// orderRouter.get("/", orderController.get);
 
 orderRouter.post(
   "/",

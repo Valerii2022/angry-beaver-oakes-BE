@@ -4,7 +4,7 @@ import { emailPattern } from "../constants/emailPattern.js";
 import { phonePattern } from "../constants/phonePattern.js";
 
 const contactSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required().regex(namePattern).message({
+  name: Joi.string().min(3).max(20).required().regex(namePattern).messages({
     "any.required": `"name" must be exist`,
     "string.min": `"name" should have a minimum length of 3`,
     "string.max": `"name" should have maximum length of 20`,

@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const orderSchema = Joi.object({
-  deliveryAddress: Joi.string().required().message({
+  deliveryAddress: Joi.string().required().messages({
     "any.required": `"deliveryAddress" must be exist`,
     "string.empty": `"deliveryAddress" cannot be an empty field`,
   }),
@@ -10,8 +10,8 @@ const orderSchema = Joi.object({
     "string.empty": `"orderType" cannnot be an empty field`,
   }),
   items: Joi.array().required().messages({
-    "any.required": `"phone" must be exist`,
-    "string.empty": `"phone" cannnot be an empty field`,
+    "any.required": `"items" must be exist`,
+    "string.empty": `"items" cannnot be an empty field`,
   }),
 });
 
