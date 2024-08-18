@@ -10,6 +10,7 @@ const orderSchema = new Schema(
     orderType: {
       type: String,
       required: true,
+      enum: ["delivery", "carryout"],
     },
     items: { type: Array, required: true },
   },
