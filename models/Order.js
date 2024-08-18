@@ -7,12 +7,20 @@ const orderSchema = new Schema(
       type: String,
       required: true,
     },
+    limitPerGuest: {
+      type: String,
+      required: true,
+    },
     orderType: {
       type: String,
       required: true,
       enum: ["delivery", "carryout"],
     },
-    items: { type: Array },
+    items: { type: Array, required: true },
+    total: {
+      type: String,
+      required: true,
+    },
   },
   { versionKey: false }
 );

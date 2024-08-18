@@ -7,7 +7,7 @@ import addOrder from "../services/ordersServices.js";
 // };
 
 const add = async (req, res, next) => {
-  const result = await addOrder();
+  const result = await addOrder(req.body);
   res.status(201).json(result);
 };
 
