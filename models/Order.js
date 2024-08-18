@@ -22,6 +22,6 @@ orderSchema.pre("findOneAndUpdate", setUpdateSettings);
 
 orderSchema.post("findOneAndUpdate", handleSaveError);
 
-const Order = model("subscribe", orderSchema);
+const Order = model("order", orderSchema);
 
 export default Order;
