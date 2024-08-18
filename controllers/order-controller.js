@@ -3,8 +3,8 @@ import HttpError from "../helpers/HttpError.js";
 import { addOrder, getOrder, updateOrder } from "../services/ordersServices.js";
 
 const get = async (req, res, next) => {
-  const { id } = req.params;
-  const order = await getOrder(id);
+  const { id: _id } = req.params;
+  const order = await getOrder({ _id });
   if (!order) {
     throw HttpError(404, `Contact with ${id} not found.`);
   }
@@ -17,10 +17,10 @@ const add = async (req, res, next) => {
 };
 
 const update = async (req, res, next) => {
-  const { id } = req.params;
-  const order = await updateOrder(id, req.body);
+  const { id: _id } = req.params;
+  const order = await updateOrder(_id, req.body);
   if (!order) {
-    throw HttpError(404, `Contact with ${id} not found.`);
+    throw HttpError(404, `Contact with ${_id} not found.`);
   }
   res.json(order);
 };

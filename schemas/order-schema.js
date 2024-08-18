@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const orderSchema = Joi.object({
+export const createOrderSchema = Joi.object({
   deliveryAddress: Joi.string().required().messages({
     "any.required": `"deliveryAddress" must be exist`,
     "string.empty": `"deliveryAddress" cannot be an empty field`,
@@ -23,4 +23,10 @@ const orderSchema = Joi.object({
   }),
 });
 
-export default orderSchema;
+export const updateOrderSchema = Joi.object({
+  deliveryAddress: Joi.string(),
+  limitPerGuest: Joi.string(),
+  orderType: Joi.string(),
+  items: Joi.array(),
+  total: Joi.string(),
+});
