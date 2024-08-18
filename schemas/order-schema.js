@@ -1,8 +1,7 @@
 import Joi from "joi";
 
 const orderSchema = Joi.object({
-  deliveryAddress: Joi.string().required().messages({
-    "any.required": `"deliveryAddress" must be exist`,
+  deliveryAddress: Joi.string().messages({
     "string.empty": `"deliveryAddress" cannot be an empty field`,
   }),
   limitPerGuest: Joi.string().required().messages({
