@@ -5,6 +5,7 @@ const orderSchema = new Schema(
   {
     deliveryAddress: {
       type: String,
+      required: true,
     },
     limitPerGuest: {
       type: String,
