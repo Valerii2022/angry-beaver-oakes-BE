@@ -6,7 +6,7 @@ const get = async (req, res, next) => {
   const { id: _id } = req.params;
   const order = await getOrder({ _id });
   if (!order) {
-    throw HttpError(404, `Contact with ${id} not found.`);
+    throw HttpError(404, `Contact with id:${id} not found.`);
   }
   res.json(order);
 };
@@ -20,7 +20,7 @@ const update = async (req, res, next) => {
   const { id: _id } = req.params;
   const order = await updateOrder(_id, req.body);
   if (!order) {
-    throw HttpError(404, `Contact with ${_id} not found.`);
+    throw HttpError(404, `Contact with id:${_id} not found.`);
   }
   res.json(order);
 };
