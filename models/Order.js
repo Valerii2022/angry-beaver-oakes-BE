@@ -12,7 +12,7 @@ const orderSchema = new Schema(
       required: true,
       enum: ["delivery", "carryout"],
     },
-    items: { type: Array, required: true },
+    items: { type: Array },
   },
   { versionKey: false }
 );
