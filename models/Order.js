@@ -5,18 +5,16 @@ const orderSchema = new Schema(
   {
     deliveryAddress: {
       type: String,
-      required: true,
     },
     limitPerGuest: {
       type: String,
-      required: true,
     },
     orderType: {
       type: String,
       required: true,
       enum: ["delivery", "carryout"],
     },
-    items: { type: Array, required: true },
+    items: { type: Array},
     total: {
       type: String,
       required: true,
