@@ -1,5 +1,7 @@
-const addOrder = async () => {
-  return "Order logic need to be here!";
-};
+import Order from "../models/Order.js";
 
-export default addOrder;
+export const getOrder = async () => Order.find();
+
+export const addOrder = async (data) => Order.create(data);
+
+
