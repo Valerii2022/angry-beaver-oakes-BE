@@ -27,4 +27,6 @@ orderRouter.put(
   orderController.update
 );
 
+orderRouter.delete("/:id", orderController.remove);
+
 export default orderRouter;

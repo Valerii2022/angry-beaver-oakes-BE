@@ -1,6 +1,11 @@
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
 import HttpError from "../helpers/HttpError.js";
-import { addOrder, getOrder, updateOrder } from "../services/ordersServices.js";
+import {
+  addOrder,
+  getOrder,
+  removeOrder,
+  updateOrder,
+} from "../services/ordersServices.js";
 
 const get = async (req, res, next) => {
   const { id: _id } = req.params;
@@ -25,8 +30,18 @@ const update = async (req, res, next) => {
   res.json(order);
 };
 
+const remove = async (req, res, next) => {
+  const { id: _id } = req.params;
+  const order = await removeOrder(_id);
+  if (!order) {
+    throw HttpError(404, `Contact with id:${_id} not found.`);
+  }
+  res.json(order);
+};
+
 export default {
   add: ctrlWrapper(add),
   get: ctrlWrapper(get),
   update: ctrlWrapper(update),
+  remove: ctrlWrapper(remove),
 };
