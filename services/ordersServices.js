@@ -1,7 +1,9 @@
 import Order from "../models/Order.js";
 
-// export const getOrder = async () => Order.find();
+export const getOrder = async (id) => Order.findOne(id);
 
-const addOrder = async (data) => Order.create(data);
+export const addOrder = async (data) => Order.create(data);
 
-export default addOrder;
+export const updateOrder = async (id, data) => {
+  return Order.findByIdAndUpdate(id, data);
+};
