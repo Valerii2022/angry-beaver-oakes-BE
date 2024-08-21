@@ -21,6 +21,14 @@ export const createOrderSchema = Joi.object({
     "any.required": `"total" must be exist`,
     "string.empty": `"total" cannnot be an empty field`,
   }),
+  guests: Joi.array().required().messages({
+    "any.required": `"guests" must be exist`,
+    "string.empty": `"guests" cannnot be an empty field`,
+  }),
+  status: Joi.string().required().messages({
+    "any.required": `"status" must be exist`,
+    "string.empty": `"status" cannnot be an empty field`,
+  }),
 });
 
 export const updateOrderSchema = Joi.object({
@@ -28,5 +36,7 @@ export const updateOrderSchema = Joi.object({
   limitPerGuest: Joi.string(),
   orderType: Joi.string(),
   items: Joi.array(),
+  guests: Joi.array(),
   total: Joi.string(),
+  status: Joi.string(),
 });

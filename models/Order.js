@@ -16,7 +16,13 @@ const orderSchema = new Schema(
       required: true,
       enum: ["delivery", "carryout"],
     },
+    status: {
+      type: String,
+      required: true,
+      enum: ["pending", "done"],
+    },
     items: { type: Array, required: true },
+    guests: { type: Array, required: true },
     total: {
       type: String,
       required: true,

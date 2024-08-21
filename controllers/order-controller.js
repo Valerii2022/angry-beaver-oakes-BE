@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
 import HttpError from "../helpers/HttpError.js";
 import {
@@ -9,16 +10,23 @@ import {
 
 const get = async (req, res, next) => {
   const { id: _id } = req.params;
-  const order = await getOrder({ _id });
-  if (!order) {
+  const guestId = nanoid(10);
+  const orderDetails = await getOrder({ _id });
+  if (!orderDetails) {
     throw HttpError(404, `Contact with id:${id} not found.`);
   }
-  res.json(order);
+
+  res.json({ guestId, orderDetails });
 };
 
 const add = async (req, res, next) => {
-  const result = await addOrder(req.body);
-  res.status(201).json(result);
+  const guestId = nanoid(10);
+  const request = {
+    ...req.body,
+    guests: [...req.body.guests, { id: guestId, guestTotal: "0" }],
+  };
+  const orderDetails = await addOrder(request);
+  res.status(201).json({ guestId, orderDetails });
 };
 
 const update = async (req, res, next) => {
