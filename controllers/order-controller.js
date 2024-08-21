@@ -62,7 +62,10 @@ const removeItems = async (req, res, next) => {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
   const items = order.items.filter((el) => el.id !== req.body.id);
-  const updatedOrder = await updateOrder(_id, { items: items });
+  const updatedOrder = await updateOrder(_id, {
+    items: items,
+    total: req.body.total,
+  });
   res.json(updatedOrder);
 };
 
