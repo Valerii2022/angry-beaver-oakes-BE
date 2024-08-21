@@ -13,7 +13,7 @@ const get = async (req, res, next) => {
   const guestId = nanoid(10);
   const orderDetails = await getOrder({ _id });
   if (!orderDetails) {
-    throw HttpError(404, `Contact with id:${id} not found.`);
+    throw HttpError(404, `Order with id:${id} not found.`);
   }
 
   res.json({ guestId, orderDetails });
@@ -33,7 +33,7 @@ const update = async (req, res, next) => {
   const { id: _id } = req.params;
   const order = await updateOrder(_id, req.body);
   if (!order) {
-    throw HttpError(404, `Contact with id:${_id} not found.`);
+    throw HttpError(404, `Order with id:${_id} not found.`);
   }
   res.json(order);
 };
@@ -42,7 +42,7 @@ const remove = async (req, res, next) => {
   const { id: _id } = req.params;
   const order = await removeOrder(_id);
   if (!order) {
-    throw HttpError(404, `Contact with id:${_id} not found.`);
+    throw HttpError(404, `Order with id:${_id} not found.`);
   }
   res.json(order);
 };
