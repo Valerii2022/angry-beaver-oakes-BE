@@ -27,6 +27,21 @@ orderRouter.put(
   orderController.update
 );
 
+orderRouter.put(
+  "/items/:id",
+  isValidId,
+  isEmptyBody,
+  validateBody(updateOrderSchema),
+  orderController.updateItems
+);
+
+orderRouter.put(
+  "/remove/:id",
+  isValidId,
+  isEmptyBody,
+  orderController.removeItems
+);
+
 orderRouter.delete("/:id", orderController.remove);
 
 export default orderRouter;

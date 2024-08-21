@@ -15,8 +15,9 @@ const get = async (req, res, next) => {
   if (!orderDetails) {
     throw HttpError(404, `Order with id:${id} not found.`);
   }
-
-  res.json({ guestId, orderDetails });
+  const guests = [...orderDetails.guests, { id: guestId, guestTotal: "0" }];
+  const result = await await updateOrder(_id, { guests });
+  res.json({ guestId, result });
 };
 
 const add = async (req, res, next) => {
@@ -38,6 +39,28 @@ const update = async (req, res, next) => {
   res.json(order);
 };
 
+const updateItems = async (req, res, next) => {
+  const { id: _id } = req.params;
+  const order = await getOrder({ _id });
+  if (!order) {
+    throw HttpError(404, `Order with id:${_id} not found.`);
+  }
+  const items = [...order.items, ...req.body.items];
+  const updatedOrder = await updateOrder(_id, { items: items });
+  res.json(updatedOrder);
+};
+
+const removeItems = async (req, res, next) => {
+  const { id: _id } = req.params;
+  const order = await getOrder({ _id });
+  if (!order) {
+    throw HttpError(404, `Order with id:${_id} not found.`);
+  }
+  const items = order.items.filter((el) => el.id !== req.body.id);
+  const updatedOrder = await updateOrder(_id, { items: items });
+  res.json(updatedOrder);
+};
+
 const remove = async (req, res, next) => {
   const { id: _id } = req.params;
   const order = await removeOrder(_id);
@@ -52,4 +75,6 @@ export default {
   get: ctrlWrapper(get),
   update: ctrlWrapper(update),
   remove: ctrlWrapper(remove),
+  updateItems: ctrlWrapper(updateItems),
+  removeItems: ctrlWrapper(removeItems),
 };
