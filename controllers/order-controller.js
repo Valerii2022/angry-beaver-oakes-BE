@@ -46,7 +46,7 @@ const updateItems = async (req, res, next) => {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
   const items = [...order.items, ...req.body.items];
-  const updatedOrder = await updateOrder(_id, { items: items });
+  const updatedOrder = await updateOrder(_id, { ...req.body, items: items });
   res.json(updatedOrder);
 };
 
