@@ -79,7 +79,7 @@ const removeItems = async (req, res, next) => {
   const items = order.items.filter((el) => el.id !== req.body.id);
   const updatedOrder = await updateOrder(_id, {
     items: items,
-    total: order.total - price * 1.15,
+    total: order.total - removedItem.price * 1.15,
     guests: [
       ...order.guests,
       { ...guest, guestTotal: guest.guestTotal - removedItem.price },
