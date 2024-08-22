@@ -37,7 +37,7 @@ const add = async (req, res, next) => {
   const guestId = nanoid(10);
   const request = {
     ...req.body,
-    guests: [...req.body.guests, { id: guestId, guestTotal: "0" }],
+    guests: [...req.body.guests, { id: guestId, guestTotal: 0 }],
   };
   const orderDetails = await addOrder(request);
   res.status(201).json({ guestId, orderDetails });

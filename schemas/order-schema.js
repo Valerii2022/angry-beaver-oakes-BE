@@ -37,7 +37,7 @@ export const updateOrderSchema = Joi.object({
   orderType: Joi.string(),
   items: Joi.array(),
   guests: Joi.array(),
-  total: Joi.string(),
+  total: Joi.number(),
   status: Joi.string(),
 });
 

@@ -24,7 +24,7 @@ const orderSchema = new Schema(
     items: { type: Array, required: true },
     guests: { type: Array, required: true },
     total: {
-      type: String,
+      type: Number,
       required: true,
     },
   },
