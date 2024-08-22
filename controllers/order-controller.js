@@ -27,7 +27,7 @@ const getGuests = async (req, res, next) => {
   }
   const guests = [
     ...orderDetails.guests,
-    { id: guestId, guestTotal: "0", guestName },
+    { id: guestId, guestTotal: "0", guestName: guestName },
   ];
   const result = await await updateOrder(_id, { guests });
   res.json({ guestName, guestId, result });
