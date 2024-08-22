@@ -74,9 +74,9 @@ const removeItems = async (req, res, next) => {
   if (!order) {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
-  const { price, guestId } = order.find((el) => el.id === req.body.id);
-  const guest = order.guests.find((el) => el.id === guestId);
-  const items = order.items.filter((el) => el.id !== req.body.id);
+  const guest = order.guests.find((el) => el.id === req.body.id);
+  const { price } = order.items.find((el) => el.id === _id);
+  const items = order.items.filter((el) => el.id !== _id);
   const updatedOrder = await updateOrder(_id, {
     items: items,
     total: order.total - price * 1.15,
