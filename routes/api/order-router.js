@@ -39,7 +39,7 @@ orderRouter.put(
   "/items/:id",
   isValidId,
   isEmptyBody,
-  validateBody(updateOrderSchema),
+  // validateBody(updateOrderSchema),
   orderController.updateItems
 );
 
