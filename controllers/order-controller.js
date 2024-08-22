@@ -78,6 +78,7 @@ const removeItems = async (req, res, next) => {
   const updatedOrder = await updateOrder(_id, {
     items: items,
     total: req.body.total,
+    guests: req.body.guests,
   });
   res.json(updatedOrder);
 };
