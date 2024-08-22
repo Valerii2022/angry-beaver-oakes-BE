@@ -13,7 +13,7 @@ const orderRouter = express.Router();
 
 orderRouter.get("/:id", orderController.get);
 
-orderRouter.get(
+orderRouter.post(
   "/guests/:id",
   isEmptyBody,
   validateBody(addGuestOrderSchema),
