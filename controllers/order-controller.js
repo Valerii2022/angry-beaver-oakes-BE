@@ -20,13 +20,17 @@ const get = async (req, res, next) => {
 const getGuests = async (req, res, next) => {
   const { id: _id } = req.params;
   const guestId = nanoid(10);
+  const guestName = req.body.name;
   const orderDetails = await getOrder({ _id });
   if (!orderDetails) {
     throw HttpError(404, `Order with id:${id} not found.`);
   }
-  const guests = [...orderDetails.guests, { id: guestId, guestTotal: "0" }];
+  const guests = [
+    ...orderDetails.guests,
+    { id: guestId, guestTotal: "0", guestName },
+  ];
   const result = await await updateOrder(_id, { guests });
-  res.json({ guestId, result });
+  res.json({ guestName, guestId, result });
 };
 
 const add = async (req, res, next) => {
