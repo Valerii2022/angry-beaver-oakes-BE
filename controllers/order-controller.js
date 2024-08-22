@@ -58,10 +58,6 @@ const updateItems = async (req, res, next) => {
   if (!order) {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
-  // const newItems = req.body.items.filter(
-  //   (newItem) =>
-  //     !order.items.some((existingItem) => existingItem.id === newItem.id)
-  // );
   const items = [...order.items, req.body.item];
   const guests = order.guests.filter((el) => el.id !== req.body.item.guestId);
   const guest = order.guests.find((el) => el.id === req.body.item.guestId);
