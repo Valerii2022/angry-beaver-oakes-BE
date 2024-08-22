@@ -62,7 +62,7 @@ const updateItems = async (req, res, next) => {
   //   (newItem) =>
   //     !order.items.some((existingItem) => existingItem.id === newItem.id)
   // );
-  const items = [...order.items, ...req.body.item];
+  const items = [...order.items, req.body.item];
   const guests = order.guests.filter((el) => el.id !== req.body.item.guestId);
   const guest = order.guests.find((el) => el.id === req.body.item.guestId);
   const updatedOrder = await updateOrder(_id, {
