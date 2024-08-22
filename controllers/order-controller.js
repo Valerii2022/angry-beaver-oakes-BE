@@ -10,6 +10,15 @@ import {
 
 const get = async (req, res, next) => {
   const { id: _id } = req.params;
+  const orderDetails = await getOrder({ _id });
+  if (!orderDetails) {
+    throw HttpError(404, `Order with id:${id} not found.`);
+  }
+  res.json(orderDetails);
+};
+
+const getGuests = async (req, res, next) => {
+  const { id: _id } = req.params;
   const guestId = nanoid(10);
   const orderDetails = await getOrder({ _id });
   if (!orderDetails) {
@@ -81,6 +90,7 @@ const remove = async (req, res, next) => {
 export default {
   add: ctrlWrapper(add),
   get: ctrlWrapper(get),
+  getGuests: ctrlWrapper(getGuests),
   update: ctrlWrapper(update),
   remove: ctrlWrapper(remove),
   updateItems: ctrlWrapper(updateItems),

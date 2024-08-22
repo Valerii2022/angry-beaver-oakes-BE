@@ -12,6 +12,8 @@ const orderRouter = express.Router();
 
 orderRouter.get("/:id", orderController.get);
 
+orderRouter.get("/guests/:id", orderController.getGuests);
+
 orderRouter.post(
   "/",
   isEmptyBody,
