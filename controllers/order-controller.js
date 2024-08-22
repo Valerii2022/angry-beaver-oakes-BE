@@ -72,7 +72,7 @@ const updateItems = async (req, res, next) => {
       ...guests,
       {
         ...guest,
-        guestTotal: guest.guestTotal + newItem.price,
+        // guestTotal: guest.guestTotal + newItem.price,
       },
     ],
   });
