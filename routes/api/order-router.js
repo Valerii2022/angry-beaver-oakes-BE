@@ -3,6 +3,7 @@ import orderController from "../../controllers/order-controller.js";
 import {
   createOrderSchema,
   updateOrderSchema,
+  addGuestOrderSchema,
 } from "../../schemas/order-schema.js";
 import validateBody from "../../decorators/validateBody.js";
 import isEmptyBody from "../../middlewares/isEmptyBody.js";
@@ -12,7 +13,12 @@ const orderRouter = express.Router();
 
 orderRouter.get("/:id", orderController.get);
 
-orderRouter.get("/guests/:id", orderController.getGuests);
+orderRouter.get(
+  "/guests/:id",
+  isEmptyBody,
+  validateBody(addGuestOrderSchema),
+  orderController.getGuests
+);
 
 orderRouter.post(
   "/",

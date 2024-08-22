@@ -40,3 +40,10 @@ export const updateOrderSchema = Joi.object({
   total: Joi.string(),
   status: Joi.string(),
 });
+
+export const addGuestOrderSchema = Joi.object({
+  name: Joi.string().required().messages({
+    "any.required": `"name" must be exist`,
+    "string.empty": `"name" cannot be an empty field`,
+  }),
+});
