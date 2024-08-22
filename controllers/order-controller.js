@@ -52,51 +52,51 @@ const update = async (req, res, next) => {
   res.json(order);
 };
 
-// const updateItems = async (req, res, next) => {
-//   const { id: _id } = req.params;
-//   const order = await getOrder({ _id });
-//   if (!order) {
-//     throw HttpError(404, `Order with id:${_id} not found.`);
-//   }
-//   const items = [...order.items, req.body.item];
-//   const guests = order.guests.filter((el) => el.id !== req.body.item.guestId);
-//   const guest = order.guests.find((el) => el.id === req.body.item.guestId);
-//   const updatedOrder = await updateOrder(_id, {
-//     items: items,
-//     total: order.total + parseFloat((req.body.item.price * 1.15).toFixed(2)),
-//     guests: [
-//       ...guests,
-//       {
-//         ...guest,
-//         guestTotal: guest.guestTotal + req.body.item.price,
-//       },
-//     ],
-//   });
-
-//   res.json(updatedOrder);
-// };
-
 const updateItems = async (req, res, next) => {
   const { id: _id } = req.params;
-  const { item } = req.body;
-
-  const updatedOrder = await updateOrder(
-    _id,
-    {
-      $push: { items: item },
-      $inc: {
-        total: parseFloat((item.price * 1.15).toFixed(2)),
-        "guests.$[guest].guestTotal": item.price,
-      },
-    },
-    { arrayFilters: [{ "guest.id": item.guestId }], new: true }
-  );
-
-  if (!updatedOrder) {
+  const order = await getOrder({ _id });
+  if (!order) {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
+  const items = [...order.items, req.body.item];
+  const guests = order.guests.filter((el) => el.id !== req.body.item.guestId);
+  const guest = order.guests.find((el) => el.id === req.body.item.guestId);
+  const updatedOrder = await updateOrder(_id, {
+    items: items,
+    total: order.total + parseFloat((req.body.item.price * 1.15).toFixed(2)),
+    guests: [
+      ...guests,
+      {
+        ...guest,
+        guestTotal: guest.guestTotal + req.body.item.price,
+      },
+    ],
+  });
+
   res.json(updatedOrder);
 };
+
+// const updateItems = async (req, res, next) => {
+//   const { id: _id } = req.params;
+//   const { item } = req.body;
+
+//   const updatedOrder = await updateOrder(
+//     _id,
+//     {
+//       $push: { items: item },
+//       $inc: {
+//         total: parseFloat((item.price * 1.15).toFixed(2)),
+//         "guests.$[guest].guestTotal": item.price,
+//       },
+//     },
+//     { arrayFilters: [{ "guest.id": item.guestId }], new: true }
+//   );
+
+//   if (!updatedOrder) {
+//     throw HttpError(404, `Order with id:${_id} not found.`);
+//   }
+//   res.json(updatedOrder);
+// };
 
 const removeItems = async (req, res, next) => {
   const { id: _id } = req.params;

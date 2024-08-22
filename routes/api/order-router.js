@@ -4,6 +4,7 @@ import {
   createOrderSchema,
   updateOrderSchema,
   addGuestOrderSchema,
+  addedItemsOrderSchema,
 } from "../../schemas/order-schema.js";
 import validateBody from "../../decorators/validateBody.js";
 import isEmptyBody from "../../middlewares/isEmptyBody.js";
@@ -39,7 +40,7 @@ orderRouter.put(
   "/items/:id",
   isValidId,
   isEmptyBody,
-  // validateBody(updateOrderSchema),
+  validateBody(addedItemsOrderSchema),
   orderController.updateItems
 );
 

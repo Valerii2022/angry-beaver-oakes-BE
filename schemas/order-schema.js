@@ -41,6 +41,10 @@ export const updateOrderSchema = Joi.object({
   status: Joi.string(),
 });
 
+export const addedItemsOrderSchema = Joi.object({
+  item: Joi.object(),
+});
+
 export const addGuestOrderSchema = Joi.object({
   name: Joi.string().required().messages({
     "any.required": `"name" must be exist`,
