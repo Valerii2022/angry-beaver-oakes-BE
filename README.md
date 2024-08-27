@@ -2,6 +2,9 @@
 
 This is the backend server for the Angry Beaver Lodge - small restouran, wich has been the cornerstone of Oakes Main Street for over 20 years.
 
+Links: 
+- [Website repository](https://github.com/Valerii2022/angry-beaver-lodge)
+
 ## Table of Contents
 
 - [Technologies and Libraries](#technologies-and-libraries)
