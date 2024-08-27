@@ -62,8 +62,8 @@ export const addedItemsOrderSchema = Joi.object({
       "any.required": `"price" must be exist`,
       "number.empty": `"price" cannnot be an empty field`,
     }),
-    instructions: Joi.string(),
-    guestName: Joi.string(),
+    instructions: Joi.string().allow(""),
+    guestName: Joi.string().allow(""),
     guestId: Joi.string().required().messages({
       "any.required": `"guestId" must be exist`,
       "string.empty": `"guestId" cannnot be an empty field`,
