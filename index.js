@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hello, Angry Beaver Lodge!");
+  res.send(`<h1>The Angry Beaver Lodge</h1><p>Server Repository</p>`);
 });
 
 app.use("/api/gallery", galleryRouter);
