@@ -3,17 +3,17 @@ import sendEmail from "../helpers/sendEmail.js";
 import addContact from "../services/contactsServices.js";
 
 const add = async (req, res, next) => {
-  const { email } = req.body;
+  // const { email } = req.body;
 
   const result = await addContact(req.body);
 
-  const contactEmail = {
-    to: email,
-    subject: "Verify email",
-    html: `<p>Thank you for your message!</p>`,
-  };
+  // const contactEmail = {
+  //   to: email,
+  //   subject: "Verify email",
+  //   html: `<p>Thank you for your message!</p>`,
+  // };
 
-  await sendEmail(contactEmail);
+  // await sendEmail(contactEmail);
 
   res.status(201).json(result);
 };
