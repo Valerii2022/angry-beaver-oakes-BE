@@ -1,17 +1,20 @@
 import Joi from "joi";
+import { namePattern } from "../constants/namePattern.js";
 
 export const createOrderSchema = Joi.object({
-  deliveryAddress: Joi.string().required().messages({
+  deliveryAddress: Joi.string().min(10).required().messages({
     "any.required": `"deliveryAddress" must be exist`,
     "string.empty": `"deliveryAddress" cannot be an empty field`,
+    "string.min": `"deliveryAddress" should have a minimum length of 10`,
   }),
   limitPerGuest: Joi.string().required().messages({
     "any.required": `"limitPerGuest" must be exist`,
     "string.empty": `"limitPerGuest" cannnot be an empty field`,
   }),
-  orderType: Joi.string().required().messages({
+  orderType: Joi.string().valid("delivery", "carryout").required().messages({
     "any.required": `"orderType" must be exist`,
     "string.empty": `"orderType" cannnot be an empty field`,
+    "any.only": `"orderType" must be one of [delivery, carryout]`,
   }),
   items: Joi.array().required().messages({
     "any.required": `"items" must be exist`,
@@ -25,9 +28,10 @@ export const createOrderSchema = Joi.object({
     "any.required": `"guests" must be exist`,
     "string.empty": `"guests" cannnot be an empty field`,
   }),
-  status: Joi.string().required().messages({
+  status: Joi.string().valid("pending", "done").required().messages({
     "any.required": `"status" must be exist`,
     "string.empty": `"status" cannnot be an empty field`,
+    "any.only": `"status" must be one of [pending, done]`,
   }),
 });
 
@@ -42,12 +46,44 @@ export const updateOrderSchema = Joi.object({
 });
 
 export const addedItemsOrderSchema = Joi.object({
-  item: Joi.object(),
+  item: Joi.object({
+    id: Joi.string().required().messages({
+      "any.required": `"id" must be exist`,
+      "string.empty": `"id" cannnot be an empty field`,
+    }),
+    title: Joi.string().required().messages({
+      "any.required": `"title" must be exist`,
+      "string.empty": `"title" cannnot be an empty field`,
+    }),
+    quantity: Joi.number().required().messages({
+      "any.required": `"quantity" must be exist`,
+      "number.empty": `"quantity" cannnot be an empty field`,
+    }),
+    price: Joi.number().required().messages({
+      "any.required": `"price" must be exist`,
+      "number.empty": `"price" cannnot be an empty field`,
+    }),
+    instructions: Joi.string().required().messages({
+      "any.required": `"instructions" must be exist`,
+      "string.empty": `"instructions" cannnot be an empty field`,
+    }),
+    guestName: Joi.string().required().messages({
+      "any.required": `"guestName" must be exist`,
+      "string.empty": `"guestName" cannnot be an empty field`,
+    }),
+    guestId: Joi.string().required().messages({
+      "any.required": `"guestId" must be exist`,
+      "string.empty": `"guestId" cannnot be an empty field`,
+    }),
+  }),
 });
 
 export const addGuestOrderSchema = Joi.object({
-  name: Joi.string().required().messages({
+  name: Joi.string().min(3).max(20).required().regex(namePattern).messages({
     "any.required": `"name" must be exist`,
+    "string.min": `"name" should have a minimum length of 3`,
+    "string.max": `"name" should have maximum length of 20`,
     "string.empty": `"name" cannot be an empty field`,
+    "string.pattern.base": `"name" must be only latin characters.`,
   }),
 });

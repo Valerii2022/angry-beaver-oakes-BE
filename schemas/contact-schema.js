@@ -21,8 +21,10 @@ const contactSchema = Joi.object({
     "string.empty": `"phone" cannnot be an empty field`,
     "string.pattern.base": `"phone" must be in format "XXX-XXX-XXXX"`,
   }),
-  message: Joi.string().required().messages({
+  message: Joi.string().min(10).max(200).required().messages({
     "any.required": `"message" must be exist`,
+    "string.min": `"message" should have a minimum length of 10`,
+    "string.max": `"message" should have maximum length of 200`,
     "string.empty": `"message" cannnot be an empty field`,
   }),
 });
