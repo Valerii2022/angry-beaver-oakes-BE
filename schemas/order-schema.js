@@ -2,10 +2,9 @@ import Joi from "joi";
 import { namePattern } from "../constants/namePattern.js";
 
 export const createOrderSchema = Joi.object({
-  deliveryAddress: Joi.string().min(10).required().messages({
+  deliveryAddress: Joi.string().required().messages({
     "any.required": `"deliveryAddress" must be exist`,
     "string.empty": `"deliveryAddress" cannot be an empty field`,
-    "string.min": `"deliveryAddress" should have a minimum length of 10`,
   }),
   limitPerGuest: Joi.string().required().messages({
     "any.required": `"limitPerGuest" must be exist`,
