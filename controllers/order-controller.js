@@ -7,6 +7,7 @@ import {
   removeOrder,
   updateOrder,
 } from "../services/ordersServices.js";
+import sendEmail from "../helpers/sendEmail.js";
 
 const get = async (req, res, next) => {
   const { id: _id } = req.params;
@@ -50,7 +51,15 @@ const update = async (req, res, next) => {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
 
-  console.log(req.body.email);
+  if (req.body.email) {
+    const contactEmail = {
+      to: req.body.email,
+      subject: "Verify email",
+      html: `<p>${order}</p><p>With best wishes, Angry Beaver Lodge!</p>`,
+    };
+
+    await sendEmail(contactEmail);
+  }
 
   res.json(order);
 };
