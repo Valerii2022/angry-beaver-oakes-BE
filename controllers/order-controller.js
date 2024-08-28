@@ -55,7 +55,7 @@ const update = async (req, res, next) => {
     const contactEmail = {
       to: req.body.email,
       subject: "Verify email",
-      html: `<p>Order id: ${order._id}</p><p>Order total: $${order.total}</p><p>With best wishes, Angry Beaver Lodge!</p>`,
+      html: `<p>Thank you for your order!</p><p>Your order id: ${order._id}</p><p>Order total: $${order.total}</p><p>With best wishes, Angry Beaver Lodge!</p>`,
     };
 
     await sendEmail(contactEmail);
