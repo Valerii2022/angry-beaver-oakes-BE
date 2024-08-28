@@ -49,6 +49,9 @@ const update = async (req, res, next) => {
   if (!order) {
     throw HttpError(404, `Order with id:${_id} not found.`);
   }
+
+  console.log(req.body.email);
+
   res.json(order);
 };
 
@@ -75,28 +78,6 @@ const updateItems = async (req, res, next) => {
 
   res.json(updatedOrder);
 };
-
-// const updateItems = async (req, res, next) => {
-//   const { id: _id } = req.params;
-//   const { item } = req.body;
-
-//   const updatedOrder = await updateOrder(
-//     _id,
-//     {
-//       $push: { items: item },
-//       $inc: {
-//         total: parseFloat((item.price * 1.15).toFixed(2)),
-//         "guests.$[guest].guestTotal": item.price,
-//       },
-//     },
-//     { arrayFilters: [{ "guest.id": item.guestId }], new: true }
-//   );
-
-//   if (!updatedOrder) {
-//     throw HttpError(404, `Order with id:${_id} not found.`);
-//   }
-//   res.json(updatedOrder);
-// };
 
 const removeItems = async (req, res, next) => {
   const { id: _id } = req.params;

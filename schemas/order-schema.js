@@ -42,6 +42,7 @@ export const updateOrderSchema = Joi.object({
   guests: Joi.array(),
   total: Joi.number(),
   status: Joi.string(),
+  email: Joi.string(),
 });
 
 export const addedItemsOrderSchema = Joi.object({
