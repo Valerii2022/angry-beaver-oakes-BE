@@ -10,7 +10,7 @@ const add = async (req, res, next) => {
   const contactEmail = {
     to: email,
     subject: "Verify email",
-    html: `<p>It is my testing (pet project) website!</p><p>Thank you for your subscribe!</p>`,
+    html: `<p>It is my testing (pet project) website!</p><p>Thank you for your subscribe!</p><p>With best wishes, Angry Beaver Lodge!</p>`,
   };
 
   await sendEmail(contactEmail);
