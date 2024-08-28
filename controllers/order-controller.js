@@ -75,7 +75,9 @@ const updateItems = async (req, res, next) => {
   const guest = order.guests.find((el) => el.id === req.body.item.guestId);
   const updatedOrder = await updateOrder(_id, {
     items: items,
-    total: order.total + parseFloat((req.body.item.price * 1.15).toFixed(2)),
+    total: (
+      order.total + parseFloat((req.body.item.price * 1.15).toFixed(2))
+    ).toFixed(2),
     guests: [
       ...guests,
       {
